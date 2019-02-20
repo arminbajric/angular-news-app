@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+.link{
+    text-decoration: none;
+    color: inherit;
+}
+.tab {
+    overflow: hidden;
+    font-family: 'Roboto', sans-serif;
+   font-size: 15px
+  }
+  .user{
+      display: inline;
+     
+  }
+  .tab:hover{
+      color:brown;
+  }
+  .navbar{
+      margin-bottom: 0px;
+  }
+  .navbar-brand{
+      vertical-align: -webkit-baseline-middle;
+  }

@@ -1,0 +1,34 @@
+<div class="d-flex justify-content-center topmargin">
+  <div class="flag col-md-7 login ">
+
+
+    <form [formGroup]="loginGroupForm" (ngSubmit)="onFormSubmit(loginGroupForm)">
+      <div formGroupName="userData">
+        <div class="form-group ">
+          <label for="email">Email:</label>
+          <input class="sendRight form-control" type="text" formControlName="email">
+        </div>
+        <div *ngIf="submitted"> <label
+          *ngIf="loginGroupForm.get('userData').get('email').hasError('required') || loginGroupForm.get('userData').get('email').hasError('minlength') || loginGroupForm.get('userData').get('email').hasError('pattern')  "
+          class="lbl ">Error.Email is required and should contain at least 6 characters and look like example@example.com.</label></div>
+        <div class="form-group ">
+          <label for="password">Password:</label>
+          <input class="sendRight form-control" type="password" formControlName="password" >
+        </div>
+        <div *ngIf="submitted"> <label
+          *ngIf="loginGroupForm.get('userData').get('password').hasError('required') || loginGroupForm.get('userData').get('password').hasError('minlength')  "
+          class="lbl ">Error.Password is required and should contain at least 6 characters.</label></div>
+        
+        <div class="form-group">
+          <button class="btn btn-primary loginbtn">Login  </button>
+          <button routerLink="/signup" class=" register btn btn-warning float-right"> Register</button>
+        </div>
+      </div>
+    </form>
+    
+  </div>
+</div>
+
+
+
+

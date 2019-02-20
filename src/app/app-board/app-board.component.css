@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+
+.container{
+  
+    font-family: 'Roboto', sans-serif;
+   
+
+   }
+   
+   .tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+  }
+  .tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.5s;
+  }
+  .tab button:hover {
+    background-color: #ddd;
+  }
+  
+  
+  .tab button.active {
+    background-color: #ccc;
+  }
+  
+ 
+  
+  .searchBlock{
+     margin-left: 10%;
+
+  }
+  .searchBlock .item{
+      margin-left: 10px;
+      font-family: 'Roboto', sans-serif;
+  }
+ 
+  .formDrop{
+      width:10%;
+    margin-left: 20px;
+    margin-top:20px;
+    margin-bottom: 20px;
+  }
+  #saveButton{
+      margin-top:20px;
+      margin-left: 85%;
+  }
+  .leftMarginForm{
+      margin-left: 20px;
+      
+  }
+  #formularList{
+    margin-left: 10%;
+    float:left;
+
+ }
+ .labelInputForRadioCheck{
+   float: right;
+   margin-right: 200px;
+   border-spacing: 100px;
+ }
+ #saveButtonContent{
+  margin-top:20px;
+  margin-left: 80%;
+}
+.version{
+  float: right;
+  margin-right: 100px;
+  display: flex;
+}
+#saveButtonContentFormular{
+  margin-top:20px;
+  margin-left: 70%;
+}
+
+.showTab{
+    display:block;
+
+
+}

@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+.topmargin{
+    
+    font-family: Roboto,sans-serif;
+    background-color: #4682B4;
+    width:100%;
+}
+.flag{
+   
+   
+    padding-top: 100px;
+    font-family: Roboto,sans-serif;
+    position: relative;
+}
+
+.sendRight{
+    float: right;
+    width:60%;
+    margin-right: 15%;
+}
+
+.row{
+    display: block;
+    margin-bottom: 25px;
+   
+}
+.login{
+    padding-top: 250px;
+    padding-bottom: 20px;
+    font-size: 15px;
+
+}
+.register{
+    float: right;
+    color:white;
+    font-size: 15px;
+}
+.loginbtn{
+    float: left;
+    font-size: 15px;
+}
+.lbl{
+    color:white;
+    font-size: smaller;
+}
+.form-control{
+    font-size: 15px;
+    font-family: inherit;
+}
