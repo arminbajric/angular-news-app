@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable,Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpParams, HttpHeaders } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
@@ -11,6 +11,7 @@ import { UserFieldForm } from '../models/userLogin';
   providedIn: 'root'
 })
 export class AuthService {
+  @Input() userFound=true;
   user:UserFieldForm;
   valid = false;
   constructor(private _router: Router, private http: HttpClient ) { }
@@ -59,7 +60,7 @@ export class AuthService {
 
     });
   }
-  login(userData): any {
+  login(userData): Boolean {
    
 
     const data = {
@@ -75,25 +76,32 @@ export class AuthService {
     })
       .subscribe((response) => {
         if(response.status==201){
+          if(response.headers.get('AdminUser')!=null|| response.headers.get('AdminUser')!='undefined')
+          {
+            sessionStorage.setItem('AdminToken',response.headers.get('AdminUser'));
+            this._router.navigate(['../cpanel']);
+          }
+          else{
           console.log(response.headers)
       localStorage.removeItem('UserToken');
       localStorage.setItem('UserToken',response.headers.get('Authorization'));
-      this._router.navigate(['/portal']);
+      this._router.navigate(['../portal']);
       this.valid=true;
+          }
 
 
     }
     else{
     
-      this._router.navigate(['/login']);
-      
+     
+      this.userFound=false;
     }
     
       });
 
 
 
-
+return this.userFound;
   }
   logout(): void {
     this.clear();

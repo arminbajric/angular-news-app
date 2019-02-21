@@ -30,27 +30,6 @@ this.createFormGroup();
 
     this.anchor.createComponent(factory);
   }
-  // opens tab and sets its properties
-  openTab(evt, tabName) {
-    let i: any;
-    const tabcontent = document.getElementsByClassName('tabcontent') as HTMLCollectionOf<HTMLElement>;
-    for (i = 0; i < tabcontent.length; i++) {
-      if (tabcontent[i].id === tabName) {
-        tabcontent[i].style.display = 'block';
-      } else {
-        tabcontent[i].style.display = 'none';
-      }
-    }
-    const tablinks = document.getElementsByClassName('tablinks') as HTMLCollectionOf<HTMLElement>;
-    for (i = 0; i < tablinks.length; i++) {
-      if (tablinks[i].id === tabName) {
-        tablinks[i].className += ' active';
-      } else {
-        tablinks[i].className = tablinks[i].className.replace(' active', '');
-      }
-    }
-  }
-  // inject template rows as component
 
 
   createFormGroup(): FormGroup {

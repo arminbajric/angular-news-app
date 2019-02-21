@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { Router, NavigationExtras } from '@angular/router';
 import{NewsServiceService} from '../services/news-service.service';
@@ -10,34 +10,27 @@ import {environment} from '../../environments/environment';
   styleUrls: ['./public-app.component.css']
 })
 export class PublicAppComponent implements OnInit {
-
+@Input() news:any;
   constructor(private _service: AuthService, private _router: Router,private _news:NewsServiceService,private http:HttpClient) { }
 
   ngOnInit() {
+    const path=this._router.url;
     
-  }
-  getCategory(cat){
-    const data={category:cat};
-    this.http.get(environment.baseApi+'/category',{
+    
+    this.http.get(environment.baseApi+path,{
       headers: new HttpHeaders()
         .set('Content-Type', 'application/json'),
       observe: 'response',
-      params:new HttpParams().set('category',cat)
+     
     }).subscribe(response=>{
-      if(response.ok){
-     this.redirectToCategory(response.body,cat);
-    }
-    
+   
+    this.news=response.body;
   });
   
+  }
+  
+  
     
-  }
-  redirectToCategory(data,cat){
-    const navigationExtras: NavigationExtras = {
-      queryParams: {
-          "data": data
-      }
-    };
-    this._router.navigate(['/'+cat],navigationExtras);
-  }
+  
+ 
 }

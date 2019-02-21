@@ -11,6 +11,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 export class LoginComponent implements OnInit {
   @Input()  submitted: Boolean;
+  @Input() userFound:Boolean;
   loginGroupForm: FormGroup;
   constructor(private _service: AuthService, private _router: Router) {
 
@@ -44,12 +45,12 @@ export class LoginComponent implements OnInit {
         email: this.loginGroupForm.get('userData').get('email').value,
         password: this.loginGroupForm.get('userData').get('password').value
       }
-      this._service.login(data);
+      this.userFound=this._service.login(data);
       if (this._service.isValidLogin() === false) {
         this.submitted = true;
       }
       else {
-        this._service.login(form.value);
+        
       }
     }
   }

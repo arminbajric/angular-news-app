@@ -7,11 +7,35 @@ import { AppBoardComponent } from './app-board/app-board.component';
 import { PublicAppComponent } from './public-app/public-app.component';
 import { CpanelComponent } from './cpanel/cpanel.component';
 import { CategoryViewComponent } from './category-view/category-view.component';
-import {NewsServiceService} from '../app/services/news-service.service'
+import { NewsServiceService } from '../app/services/news-service.service'
 export const routes: Routes = [
   {
     path: '',
-    component: PublicAppComponent
+    redirectTo: 'home',
+    pathMatch: 'full'
+  },
+  {
+    path: 'home',
+    children: [{
+      path: '',
+      redirectTo:'lastest',
+      pathMatch:'full'
+    }, 
+    {
+      path:'lastest',
+      component:PublicAppComponent
+    },{
+      path: 'sport',
+      component: PublicAppComponent
+    }, {
+      path: 'lifestyle',
+      component: PublicAppComponent
+    },
+    {
+      path: 'fun',
+      component: PublicAppComponent
+    }
+    ]
   },
   {
     path: 'login',
@@ -31,16 +55,16 @@ export const routes: Routes = [
     component: CpanelComponent
   },
   {
-    path:'sport',
-  component:CategoryViewComponent,
+    path: 'sport',
+    component: CategoryViewComponent,
   },
   {
-    path:'fun',
-  component:CategoryViewComponent,
+    path: 'fun',
+    component: CategoryViewComponent,
   },
   {
-    path:'lifestyle',
-  component:CategoryViewComponent,
+    path: 'lifestyle',
+    component: CategoryViewComponent,
   }
 ];
 
