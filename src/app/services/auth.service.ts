@@ -29,14 +29,14 @@ export class AuthService {
     this.http.get(environment.baseApi+'/portal',{
       headers: new HttpHeaders()
         .set('Content-Type', 'application/json')
-        .set('authorization',localStorage.getItem('UserToken')),
+        .set('RegularUser',localStorage.getItem('UserToken')),
       observe: 'response'
     }).subscribe(response=>{
 
     })
     
   }
-    return false;
+    return true;
   }
   isTokenExpired(): boolean {
     return false;
@@ -76,7 +76,7 @@ export class AuthService {
     })
       .subscribe((response) => {
         if(response.status==201){
-          if(response.headers.get('AdminUser')!=null|| response.headers.get('AdminUser')!='undefined')
+          if(response.headers.get('AdminUser'))
           {
             sessionStorage.setItem('AdminToken',response.headers.get('AdminUser'));
             this._router.navigate(['../cpanel']);
@@ -84,7 +84,7 @@ export class AuthService {
           else{
           console.log(response.headers)
       localStorage.removeItem('UserToken');
-      localStorage.setItem('UserToken',response.headers.get('Authorization'));
+      localStorage.setItem('UserToken',response.headers.get('RegularUser'));
       this._router.navigate(['../portal']);
       this.valid=true;
           }

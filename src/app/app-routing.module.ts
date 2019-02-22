@@ -7,7 +7,7 @@ import { AppBoardComponent } from './app-board/app-board.component';
 import { PublicAppComponent } from './public-app/public-app.component';
 import { CpanelComponent } from './cpanel/cpanel.component';
 import { CategoryViewComponent } from './category-view/category-view.component';
-import { NewsServiceService } from '../app/services/news-service.service'
+
 export const routes: Routes = [
   {
     path: '',
@@ -49,6 +49,29 @@ export const routes: Routes = [
     path: 'portal',
     component: AppBoardComponent,
     canActivate: [AuthGuard],
+    children:[{
+      path:'',
+      redirectTo:'lastest',
+      pathMatch:'full'
+    },{
+      path:'lastest',
+      component:AppBoardComponent
+    },
+    {
+      path: 'sport',
+      component: CategoryViewComponent,
+    },
+    {
+      path: 'fun',
+      component: CategoryViewComponent,
+    },
+    {
+      path: 'lifestyle',
+      component: CategoryViewComponent,
+    },{
+      path:'user',
+      component:CategoryViewComponent
+    }]
   },
   {
     path: 'cpanel',

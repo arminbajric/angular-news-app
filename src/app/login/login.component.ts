@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import AOS from 'aos';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 @Component({
   selector: 'app-login',
@@ -13,15 +13,21 @@ export class LoginComponent implements OnInit {
   @Input()  submitted: Boolean;
   @Input() userFound:Boolean;
   loginGroupForm: FormGroup;
-  constructor(private _service: AuthService, private _router: Router) {
+  constructor(private _service: AuthService, private _router: Router,private route:ActivatedRoute) {
 
   }
 
   ngOnInit() {
     AOS.init();
     this.submitted=false;
-    if (localStorage.getItem('token')) {
-      this._router.navigate(['/app']);
+   this.route.queryParams.subscribe(params=>{
+     if(params['logged'])
+     {
+       this.userFound=false;
+     }
+   })
+    if (localStorage.getItem('UserToken')!=null) {
+      this._router.navigate(['/portal']);
     }
     this.loginGroupForm = new FormGroup({
       userData: new FormGroup({

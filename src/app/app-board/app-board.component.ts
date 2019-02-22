@@ -1,45 +1,48 @@
-import { Component, OnInit, Input, ViewContainerRef, ComponentFactoryResolver, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit, Input, ComponentFactoryResolver } from '@angular/core';
 import { FormGroup, FormArray, FormBuilder, Validators } from '@angular/forms';
 import * as jwt_decode from 'jwt-decode';
-import { QueueComponent } from '../queue/queue.component';
+
+
+import { Router} from '@angular/router';
+import { longStackSupport } from 'q';
 @Component({
   selector: 'app-app-board',
   templateUrl: './app-board.component.html',
   styleUrls: ['./app-board.component.css']
 })
-export class AppBoardComponent implements OnInit, AfterViewInit {
+export class AppBoardComponent implements OnInit {
   orderForm: FormGroup;
   items: FormArray;
   @Input() user: any;
-  @ViewChild('mainQueue', { read: ViewContainerRef }) private anchor: ViewContainerRef;
-  constructor(private formBuilder: FormBuilder, private resolver: ComponentFactoryResolver) {
+ 
+  constructor(private formBuilder: FormBuilder, private resolver: ComponentFactoryResolver,private _router:Router) {
   }
 
   ngOnInit() {
-    try {
-      this.user = jwt_decode(localStorage.getItem('token'));
-      console.log(this.user);
-    } catch (Error) {
-      return null;
+    if(localStorage.getItem('UserToken')){
+      try {
+        this.user = jwt_decode(localStorage.getItem('UserToken'));
+      
+        console.log(this.user);
+      } catch (Error) {
+        this._router.navigate(['/login'],{ queryParams: { logged: false } });
+      }
     }
+    else{
+     this._router.navigate(['/login'],{ queryParams: { logged: false } })
+      
+    }
+    
+}
+logOut(){
+  this._router.navigate(['']);
+  localStorage.removeItem('UserToken');
+  
+}
+  
 
-this.createFormGroup();
-  }
-  ngAfterViewInit() {
-    const factory = this.resolver.resolveComponentFactory(QueueComponent);
 
-    this.anchor.createComponent(factory);
-  }
-
-
-  createFormGroup(): FormGroup {
-    return this.formBuilder.group({
-      username:[ '',[Validators.required]],
-      email: [ '',[Validators.required]],
-      password: [ '',[Validators.required]],
-      country:'',
-      gender:''
-    });
-  }
+ 
+ 
 
 }
