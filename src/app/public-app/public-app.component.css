@@ -17,7 +17,37 @@
   }
   .navbar{
       margin-bottom: 0px;
+      z-index: 2;
   }
   .navbar-brand{
       vertical-align: -webkit-baseline-middle;
+  }
+  .news{
+      display: block;
+      width:80%;
+      margin-left: 10%;
+      font-family: 'Roboto',sans-serif;
+      font-size: 15px;
+  }
+  .news-item{
+      width:30%;
+      margin-left: 3.33%;
+      float: left;
+      font-family: inherit;
+      display: block;
+  }
+  .subtitle{
+      float:left;
+      font-family: inherit;
+      font-size: smaller;
+    
+     
+      
+      
+    
+  }
+  .title{
+      float: right;
+      font-family: inherit;
+      text-justify: newspaper;
   }

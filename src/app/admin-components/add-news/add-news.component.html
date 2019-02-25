@@ -1,0 +1,39 @@
+<div class="block">
+  <div id="addNews" class="collapse">
+    <div class="block">
+      <h2>Add news</h2>
+      <form [formGroup]="addNewsFormGroup">
+        <div formGroupName="newsData" class="form-group">
+          <div class="block">
+            <label class="">News title</label>
+            <input class="sendRight" type="text" formControlName="title" placeholder="Title">
+          </div>
+
+          <div class=" block">
+            <label>Subtitle</label>
+            <input class="sendRight" type="text" formControlName="subtitle" placeholder="Subtitle">
+          </div>
+          <div class="block">
+            <label>Main text</label>
+            <textarea rows="15" class="sendRight" formControlName="textContent"
+              placeholder="News text">hhhhhhhhh</textarea>
+          </div>
+          <div class="block">
+            <label class="col-md-4">Category</label>
+            <select class="sendRight" formControlName="category">
+              <option>Sport</option>
+              <option>Fun</option>
+
+              <option>Lifestyle</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+        </div>
+        <div class="block"><button type="button" (click)="addNewsSubmit(addNewsFormGroup)"
+            class="btn block col-md-4">Submit</button></div>
+        <div *ngIf="state">News adeed !</div>
+      </form>
+    </div>
+  </div>
+</div>

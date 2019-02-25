@@ -1,4 +1,4 @@
-import { Injectable,Input } from '@angular/core';
+import { Injectable, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpParams, HttpHeaders } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
@@ -11,31 +11,30 @@ import { UserFieldForm } from '../models/userLogin';
   providedIn: 'root'
 })
 export class AuthService {
-  @Input() userFound=true;
-  user:UserFieldForm;
+  @Input() userFound = true;
+  user: UserFieldForm;
   valid = false;
-  constructor(private _router: Router, private http: HttpClient ) { }
+  constructor(private _router: Router, private http: HttpClient) { }
 
   clear(): void {
     localStorage.clear();
   }
-  isAdmin(user){
+  isAdmin(user) {
     return true;
   }
   isAuthenticated(): boolean {
-    if(localStorage.getItem('UserToken'))
-    {
-    
-    this.http.get(environment.baseApi+'/portal',{
-      headers: new HttpHeaders()
-        .set('Content-Type', 'application/json')
-        .set('RegularUser',localStorage.getItem('UserToken')),
-      observe: 'response'
-    }).subscribe(response=>{
+    if (localStorage.getItem('UserToken')) {
 
-    })
-    
-  }
+      this.http.get(environment.baseApi + '/portal', {
+        headers: new HttpHeaders()
+          .set('Content-Type', 'application/json')
+          .set('RegularUser', localStorage.getItem('UserToken')),
+        observe: 'response'
+      }).subscribe(response => {
+
+      })
+
+    }
     return true;
   }
   isTokenExpired(): boolean {
@@ -61,7 +60,7 @@ export class AuthService {
     });
   }
   login(userData): Boolean {
-   
+
 
     const data = {
       email: userData.email,
@@ -71,37 +70,37 @@ export class AuthService {
 
     this.http.post(environment.baseApi + '/login', data, {
       headers: new HttpHeaders()
-        .set('Content-Type', 'application/json').set('authorization','text'),
+        .set('Content-Type', 'application/json'),
       observe: 'response'
     })
       .subscribe((response) => {
-        if(response.status==201){
-          if(response.headers.get('AdminUser'))
-          {
-            sessionStorage.setItem('AdminToken',response.headers.get('AdminUser'));
+        console.log(response.headers.get('RegularUser'));
+        if (response.status == 201) {
+          if (response.headers.get('AdminUser')) {
+            sessionStorage.setItem('AdminToken', response.headers.get('AdminUser'));
             this._router.navigate(['../cpanel']);
           }
-          else{
-          console.log(response.headers)
-      localStorage.removeItem('UserToken');
-      localStorage.setItem('UserToken',response.headers.get('RegularUser'));
-      this._router.navigate(['../portal']);
-      this.valid=true;
+          else if (response.headers.get('RegularUser')){
+            console.log(response.headers)
+            localStorage.removeItem('UserToken');
+            localStorage.setItem('UserToken', response.headers.get('RegularUser'));
+            this._router.navigate(['../portal']);
+            this.valid = true;
           }
 
 
-    }
-    else{
-    
-     
-      this.userFound=false;
-    }
-    
+        }
+        else {
+
+
+          this.userFound = false;
+        }
+
       });
 
 
 
-return this.userFound;
+    return this.userFound;
   }
   logout(): void {
     this.clear();

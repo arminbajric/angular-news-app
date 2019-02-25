@@ -1,37 +1,104 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a href="/cpanel" class="links tab"><div class="navbar-brand tab">cPanel <span class="glyphicon glyphicon-home "> </span></div></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item   tab">
-                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#addNews" aria-expanded="false" aria-controls="options">
-                   Add news
-                  </button>
-            </li>
-            <li class="nav-item tab">
-                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#editNews" aria-expanded="false" aria-controls="options">
-                   Edit news
-                   </button>
-            </li>
-            <li class="nav-item tab ">
-                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#editUsers" aria-expanded="false" aria-controls="options">
-                   Edit users
-                   </button>
-            </li>
-            <li class="nav-item tab ">
-                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#addAdmin" aria-expanded="false" aria-controls="options">
-                    Add new admin
-                   </button>
-            </li>
-            
-          </ul>
-          <a class="links tab " [routerLink]="['./user']"> <div id="userProfile" class="col-md-3">{{user.sub}}<span class="glyphicon glyphicon-user user"> </span> </div></a>
-          <a class="links tab " [routerLink]="['']"(click)="logOut()"> <div id="logout" class="col-md-3">Logout<span class="glyphicon glyphicon-log-out user"> </span> </div></a>
+  <a href="/cpanel" class="links tab">
+    <div class="navbar-brand tab">cPanel <span class="glyphicon glyphicon-home "> </span></div>
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+    aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item   tab">
+        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#addNews"
+          aria-expanded="false" aria-controls="options">
+          Add news
+        </button>
+      </li>
+      <li class="nav-item tab">
+        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#editNews"
+          aria-expanded="false" aria-controls="options">
+          Edit news
+        </button>
+      </li>
+      <li class="nav-item tab ">
+        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#editUsers"
+          aria-expanded="false" aria-controls="options">
+          Edit users
+        </button>
+      </li>
+      <li class="nav-item tab ">
+        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#addAdmin"
+          aria-expanded="false" aria-controls="options">
+          Add new admin
+        </button>
+      </li>
+
+    </ul>
+    <a class="links tab " [routerLink]="['./user']">
+      <div id="userProfile" class="col-md-3"><span class="glyphicon glyphicon-user user"> {{user.sub}}</span> </div>
+    </a>
+    <a class="links tab " [routerLink]="['']" (click)="logOut()">
+      <div id="logout" class="col-md-3"><span class="glyphicon glyphicon-log-out user"> Logout </span> </div>
+    </a>
+  </div>
+</nav>
+<div id="addAdmin" class="collapse">
+  <div class="block col-md-12">
+    <h2>Add new admin</h2>
+  </div>
+</div>
+
+<div id="addNews" class="collapse">
+  <div class="block col-md-12">
+    <h2 >Add news</h2>
+    <form  [formGroup]="addNewsFormGroup" (ngSubmit)="addNewsSubmit(addNewsFormGroup)">
+      <div formGroupName="newsData" class="form-group">
+        <div class="block col-md-12">
+          <label class="">News title</label>
+          <input class="sendRight" type="text" formControlName="title" placeholder="Title">
         </div>
-  </nav>
-  <div id="addAdmin" class="collapse"><h2>Add new admin</h2></div>
-  <div id="addNews" class="collapse"><h2>Add news</h2></div>
-  <div id="editNews" class="collapse"><h2>Edit news</h2></div>
-  <div id="editUsers" class="collapse"><h2>Edit users</h2></div>
+
+        <div class="block col-md-12">
+          <label>Subtitle</label>
+          <input class="sendRight" type="text" formControlName="subtitle" placeholder="Subtitle">
+        </div>
+        <div class="block col-md-12">
+          <label>Main text</label>
+          <textarea rows="15" type="text" class="sendRight area" formControlName="textContent"
+            placeholder="News text"></textarea>
+        </div>
+        <div class="block col-md-12">
+          <label class="col-md-2">Category</label>
+          <select class="sendRight" formControlName="category">
+            <option>Sport</option>
+            <option>Fun</option>
+
+            <option>Lifestyle</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="block col-md-12">
+          <label>Image</label>
+          <input clas="sendRight" type="file"  accept="image/jpeg"  (change)="onFileChanged($event)">
+        </div>
+
+      </div>
+      <div class="block col-md-12"><button type="submit" [disabled]="!addNewsFormGroup.valid" 
+          class="btn btn-primary block col-md-4">Submit</button></div>
+      <div *ngIf="state">News adeed !</div>
+    </form>
+  </div>
+
+</div>
+
+<div id="editNews" class="collapse">
+  
+  <div class="block">
+    <h2>Edit news</h2>
+  </div>
+</div>
+<div id="editUsers" class="collapse">
+  <div class="block">
+    <h2>Edit users</h2>
+  </div>
+</div>

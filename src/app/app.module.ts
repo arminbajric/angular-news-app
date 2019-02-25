@@ -9,12 +9,14 @@ import { AppBoardComponent } from './app-board/app-board.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 
-import { TemplateComponent } from './template/template.component';
+
 import { QueueComponent } from './queue/queue.component';
 import { PublicAppComponent } from './public-app/public-app.component';
 import { NewsPreviewComponent } from './news-preview/news-preview.component';
 import { CpanelComponent } from './cpanel/cpanel.component';
 import { CategoryViewComponent } from './category-view/category-view.component';
+import { AddNewsComponent } from './admin-components/add-news/add-news.component';
+import { EditUserComponent } from './admin-components/edit-user/edit-user.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +25,7 @@ import { CategoryViewComponent } from './category-view/category-view.component';
     AppBoardComponent,
 
 
-    TemplateComponent,
+    
 
 
     QueueComponent,
@@ -38,7 +40,13 @@ import { CategoryViewComponent } from './category-view/category-view.component';
     CpanelComponent,
 
 
-    CategoryViewComponent
+    CategoryViewComponent,
+
+
+    AddNewsComponent,
+
+
+    EditUserComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +56,7 @@ import { CategoryViewComponent } from './category-view/category-view.component';
     ReactiveFormsModule
 
   ],
-  entryComponents: [QueueComponent],
+  entryComponents: [AddNewsComponent],
   providers: [],
   bootstrap: [AppComponent]
 })
