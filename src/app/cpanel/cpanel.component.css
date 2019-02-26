@@ -40,3 +40,12 @@ li button:hover{
             box-sizing: border-box;
            
 }
+.status{
+    float:left;
+    margin-left: 20%;
+    font-family: 'Roboto',sans-serif;
+    color:brown;
+}
+.submit{
+    float:left;
+}

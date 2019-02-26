@@ -12,6 +12,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 export class CpanelComponent implements OnInit, AfterViewInit {
   @ViewChild('actionField', { read: ViewContainerRef }) element: ViewContainerRef;
   state: boolean;
+  submitted:boolean;
   array:any;
   @Input() addNewsFormGroup = new FormGroup({
     newsData: new FormGroup({
@@ -30,7 +31,10 @@ export class CpanelComponent implements OnInit, AfterViewInit {
     })
   })
 
-  constructor(private _changeDetectionRef: ChangeDetectorRef, private _router: Router, private _admin: AdminService, private resolver: ComponentFactoryResolver) { }
+  constructor(private _changeDetectionRef: ChangeDetectorRef, private _router: Router, private _admin: AdminService, private resolver: ComponentFactoryResolver) { 
+    this.state=false;
+    this.submitted=false;
+  }
   @Input() user: any;
 
 
@@ -91,13 +95,14 @@ export class CpanelComponent implements OnInit, AfterViewInit {
     
   }
   addNewsSubmit(data:FormGroup) {
-    this.state = false;
+    this.submitted=true;
     
   
     
     this._admin.addNews(data).subscribe(response => {
       if (response.status == 201) {
         this.state = true;
+        this.submitted=false;
       }
     });
 

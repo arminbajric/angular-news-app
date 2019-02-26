@@ -30,18 +30,21 @@
       </li>
 
     </ul>
-    <a class="link tab " href="/signup">
+    <a class="link tab " [routerLink]="['../../signup']">
       <div id="register" class="col-md-3">Register<span class="glyphicon glyphicon-user user"> </span> </div>
     </a>
-    <a class="link tab " href="/login">
+    <a class="link tab " [routerLink]="['../../login']">
       <div id="login" class="col-md-3">Login<span class="glyphicon glyphicon-log-in user"> </span> </div>
     </a>
   </div>
 </nav>
+<div class="col-md-4"></div>
+<div class="col-md-4 loading" *ngIf="!dataLoadingDone"><img src="../../assets/loading.gif"></div>
+<div class="col-md-4"></div>
+<div class="container " *ngIf="dataLoadingDone">
 
-<div class="container ">
-  <div class="news ">
-    <h3>Lastest</h3>
+  <div class="news">
+    <h3>{{lastest}}</h3>
     <div *ngFor="let lastest of news.lastest">
       <div class="news-item col-md-4">
         <div class="subtitle ">
@@ -52,12 +55,13 @@
           <h3>{{lastest.title}}</h3>
         </div>
       </div>
+
     </div>
   </div>
 
-  <div class="news ">
-   
-    <h3>Sport</h3>
+  <div class="news">
+
+    <h3>{{news.sport[0].category}}</h3>
     <div *ngFor="let sport of news.sport">
       <div class="news-item col-md-4">
         <div class="subtitle ">
@@ -71,10 +75,10 @@
       </div>
     </div>
   </div>
- 
-  <div class="news ">
-    
-    <h3>Fun</h3>
+
+  <div class="news">
+
+    <h3>{{news.fun[0].category}}</h3>
     <div *ngFor="let fun of news.fun">
       <div class="news-item col-md-4">
         <div class="subtitle">
@@ -88,9 +92,9 @@
       </div>
     </div>
   </div>
- 
-  <div class="news ">
-    <h3>Lifestyle</h3>
+
+  <div class="news">
+    <h3>{{news.lifestyle[0].category}}</h3>
     <div *ngFor="let life of news.lifestyle">
       <div class="news-item col-md-4">
         <div class="subtitle">
@@ -104,9 +108,9 @@
       </div>
     </div>
   </div>
- 
-  <div class="news ">
-    <h3>Other</h3>
+
+  <div class="news">
+    <h3>{{news.other[0].category}}</h3>
     <div *ngFor="let other of news.other">
       <div class="news-item col-md-4">
         <div class="subtitle">

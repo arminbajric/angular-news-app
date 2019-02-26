@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+.link{
+    text-decoration: none;
+    color: inherit;
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px
+}
+link:hover{
+    color:brown;
+}
+.tab {
+    overflow: hidden;
+    font-family: 'Roboto', sans-serif;
+   font-size: 15px
+  }
+  .user{
+      display: inline;
+     
+  }
+  .tab:hover{
+      color:brown;
+  }
+  .navbar{
+      margin-bottom: 0px;
+      z-index: 2;
+  }
+  .navbar-brand{
+      vertical-align: -webkit-baseline-middle;
+  }
+  .news{
+    
+     
+     margin-top: 20px;
+      font-family: 'Roboto',sans-serif;
+      font-size: 15px;
+      margin-bottom: 20px;
+    
+  }
+  .news-item{
+    
+float: left;
+    overflow: hidden;
+     
+  }
+  h3{
+      color:#6699FF;
+  }
+  h5{
+      color:brown;
+  }
+  .subtitle{
+     
+      font-family: inherit;
+      font-size: smaller;
+      display: block;
+  }
+  .title{
+    
+      font-family: inherit;
+      text-justify: newspaper;
+  }
+  ul{
+      list-style-type: none;
+  }
+  @media only screen and (max-width: 600px) {
+    body {
+      background-color: lightblue;
+    }
+    .news-item{
+        display: block;
+    
+          width:80%;
+          margin-left: 10%;
+        
+          font-family: inherit;
+         
+      }
+  }
+
+ 

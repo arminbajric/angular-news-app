@@ -49,25 +49,25 @@
 </div>
 
 <div id="addNews" class="collapse">
-  <div class="block col-md-12">
+  <div class="block col-md-11">
     <h2 >Add news</h2>
     <form  [formGroup]="addNewsFormGroup" (ngSubmit)="addNewsSubmit(addNewsFormGroup)">
       <div formGroupName="newsData" class="form-group">
-        <div class="block col-md-12">
+        <div class="block col-md-10">
           <label class="">News title</label>
           <input class="sendRight" type="text" formControlName="title" placeholder="Title">
         </div>
 
-        <div class="block col-md-12">
+        <div class="block col-md-10">
           <label>Subtitle</label>
           <input class="sendRight" type="text" formControlName="subtitle" placeholder="Subtitle">
         </div>
-        <div class="block col-md-12">
+        <div class="block col-md-10">
           <label>Main text</label>
           <textarea rows="15" type="text" class="sendRight area" formControlName="textContent"
             placeholder="News text"></textarea>
         </div>
-        <div class="block col-md-12">
+        <div class="block col-md-10">
           <label class="col-md-2">Category</label>
           <select class="sendRight" formControlName="category">
             <option>Sport</option>
@@ -77,15 +77,16 @@
             <option>Other</option>
           </select>
         </div>
-        <div class="block col-md-12">
+        <div class="block col-md-10">
           <label>Image</label>
           <input clas="sendRight" type="file"  accept="image/jpeg"  (change)="onFileChanged($event)">
         </div>
 
       </div>
-      <div *ngIf="state">News adeed !</div>
-      <div class="block col-md-12"><button type="submit" [disabled]="!addNewsFormGroup.valid" 
-          class="btn btn-primary block col-md-4">Submit</button></div>
+     
+      <div class="block col-md-10"><button type="submit" [disabled]="!addNewsFormGroup.valid" 
+          class="btn btn-primary block submit col-md-3">Submit</button> <div class="status" *ngIf="state">News adeed !</div>
+          <div class="status" *ngIf="!state && submitted"><img src="../../assets/load.gif" width="40px" height="40px"></div></div>
      
     </form>
   </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectorRef, NgZone } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { Router, NavigationExtras } from '@angular/router';
 import{NewsServiceService} from '../services/news-service.service';
@@ -11,7 +11,14 @@ import {environment} from '../../environments/environment';
 })
 export class PublicAppComponent implements OnInit {
 @Input() news:any;
-  constructor(private _service: AuthService, private _router: Router,private _news:NewsServiceService,private http:HttpClient) { }
+@Input() dataLoadingDone:boolean;
+@Input() lastest='Lastest';
+changeDetectorRefs:ChangeDetectorRef[] = [];
+
+  constructor(private zone: NgZone,private _service: AuthService, private _router: Router,private _news:NewsServiceService,private http:HttpClient) { 
+    this.dataLoadingDone=false;
+    
+  }
 
   ngOnInit() {
     const path=this._router.url;
@@ -25,6 +32,8 @@ export class PublicAppComponent implements OnInit {
     }).subscribe(response=>{
    
     this.news=response.body;
+    this.dataLoadingDone=true;
+   
     console.log(this.news)
   });
   

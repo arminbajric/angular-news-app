@@ -30,11 +30,13 @@ link:hover{
   .news{
     
      
-     margin-top: 20px;
+     margin-top: 50px;
       font-family: 'Roboto',sans-serif;
       font-size: 15px;
       margin-bottom: 20px;
-      
+     
+    
+      box-sizing: border-box;
 
   }
   .news-item{
@@ -42,6 +44,10 @@ link:hover{
 float: left;
       
      
+  }
+  .pagination{
+      font-family: 'Roboto',sans-serif;
+      font-size: 15px;
   }
   h3{
       color:#6699FF;
@@ -60,6 +66,7 @@ float: left;
       font-family: inherit;
       text-justify: newspaper;
   }
+  
   @media only screen and (max-width: 600px) {
     body {
       background-color: lightblue;
@@ -72,6 +79,10 @@ float: left;
         
           font-family: inherit;
          
+      }
+      .loading{
+          width:80%;
+          margin-left: 10%;
       }
   }
  

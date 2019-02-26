@@ -26,17 +26,51 @@ export const routes: Routes = [
       component:PublicAppComponent
     },{
       path: 'sport',
-      component: PublicAppComponent
+      
+      children:[{
+        path:'',
+        redirectTo:'pages',
+        pathMatch:'full'
+      },{
+        path:'pages',
+        component:CategoryViewComponent
+      }]
     }, {
       path: 'lifestyle',
-      component: PublicAppComponent
+      children:[{
+        path:'',
+        redirectTo:'pages',
+        pathMatch:'full'
+      },{
+        path:'pages',
+        component:CategoryViewComponent
+      }]
     },
     {
       path: 'fun',
-      component: PublicAppComponent
+      children:[{
+        path:'',
+        redirectTo:'pages',
+        pathMatch:'full'
+      },{
+        path:'pages',
+        component:CategoryViewComponent
+      }]
     }
     ]
   },
+  {
+    path: 'other',
+    children:[{
+      path:'',
+      redirectTo:'pages',
+      pathMatch:'full'
+    },{
+      path:'pages',
+      component:CategoryViewComponent
+    }]
+  }
+,
   {
     path: 'login',
     component: LoginComponent
