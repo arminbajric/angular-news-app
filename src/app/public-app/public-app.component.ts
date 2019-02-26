@@ -25,6 +25,7 @@ export class PublicAppComponent implements OnInit {
     }).subscribe(response=>{
    
     this.news=response.body;
+    console.log(this.news)
   });
   
   }

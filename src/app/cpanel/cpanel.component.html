@@ -83,9 +83,10 @@
         </div>
 
       </div>
+      <div *ngIf="state">News adeed !</div>
       <div class="block col-md-12"><button type="submit" [disabled]="!addNewsFormGroup.valid" 
           class="btn btn-primary block col-md-4">Submit</button></div>
-      <div *ngIf="state">News adeed !</div>
+     
     </form>
   </div>
 

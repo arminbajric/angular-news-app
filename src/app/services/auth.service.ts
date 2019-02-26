@@ -70,7 +70,7 @@ export class AuthService {
 
     this.http.post(environment.baseApi + '/login', data, {
       headers: new HttpHeaders()
-        .set('Content-Type', 'application/json'),
+        .set('Content-Type', 'application/json').set('authorization','text'),
       observe: 'response'
     })
       .subscribe((response) => {

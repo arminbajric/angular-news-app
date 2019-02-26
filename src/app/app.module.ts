@@ -16,7 +16,7 @@ import { NewsPreviewComponent } from './news-preview/news-preview.component';
 import { CpanelComponent } from './cpanel/cpanel.component';
 import { CategoryViewComponent } from './category-view/category-view.component';
 import { AddNewsComponent } from './admin-components/add-news/add-news.component';
-import { EditUserComponent } from './admin-components/edit-user/edit-user.component';
+import { EditNewsComponent } from './admin-components/edit-news/edit-news.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,7 +46,7 @@ import { EditUserComponent } from './admin-components/edit-user/edit-user.compon
     AddNewsComponent,
 
 
-    EditUserComponent
+    EditNewsComponent
   ],
   imports: [
     BrowserModule,
