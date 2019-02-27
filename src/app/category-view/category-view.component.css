@@ -62,6 +62,11 @@ float: left;
   ul{
       list-style-type: none;
   }
+  .pagination{
+      width: 40%;
+      margin-left: 30%;
+      font-size: 15px;
+  }
   @media only screen and (max-width: 600px) {
     body {
       background-color: lightblue;
@@ -74,6 +79,10 @@ float: left;
         
           font-family: inherit;
          
+      }
+      .pagination{
+          width: 60%;
+          margin-left: 20%;
       }
   }
 
